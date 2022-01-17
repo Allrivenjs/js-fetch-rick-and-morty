@@ -468,6 +468,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
 .ml-4 {
   margin-left: 1rem;
 }
