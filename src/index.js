@@ -20,6 +20,8 @@ for (let index = 0; index < 6; index++) {
 const showCharactersInDOM = async () => {
     characters = await getRandomCharactersWithAnArray(randomCharacters);
 
+    dom_characters.innerHTML = '';
+
     characters.map((element, i) => {
         const character = document.createElement('section');
         character.classList = 'flex bg-white p-2 rounded-lg shadow-md h-52';
