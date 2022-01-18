@@ -8,6 +8,7 @@ let previousPage;
 // DOM elements
 const domCharacters = document.getElementById('characters');
 const domPaginator = document.getElementById('paginator');
+domCharacters.style.height = '1460px'
 
 const addPaginator = () => {
     const previousPageBtn = document.createElement('button');
@@ -55,36 +56,11 @@ const removePaginator = () => {
 
 const showCharactersInDOM = async (page = `https://rickandmortyapi.com/api/character/?page=1`) => {
     removePaginator();
-    
+
     domCharacters.innerHTML = `
-            <td class="px-6 py-4 whitespace-nowrap">
-            <div class="flex items-center">
-                <div class="flex-shrink-0 w-10 h-10">
-                    <div class="w-10 h-10 rounded-full bg-slate-300"></div>
-                </div>
-                <div class="ml-4">
-                    
-                </div>
-            </div>
-        </td>
-
-        <td class="px-6 py-4 whitespace-nowrap">
-            <div class="text-sm text-gray-900"></div>
-        </td>
-
-        <td class="px-6 py-4 whitespace-nowrap">
-            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
-                
-            </span>
-        </td>
-
-        <td class="px-6 py-4 whitespace-nowrap">
-            <div class="text-sm text-gray-900"></div>
-        </td>
-
-        <td class="px-6 py-4 whitespace-nowrap">
-            <div class="text-sm text-gray-900"></div>
-        </td>
+        <div class="w-full h-full">
+            <div class="spinner"></div>
+        </div>
     `;
 
     let { characters, info } = await getCharacters(page);
