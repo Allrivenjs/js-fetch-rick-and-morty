@@ -8,7 +8,7 @@ let previousPage;
 // DOM elements
 const domCharacters = document.getElementById('characters');
 const domPaginator = document.getElementById('paginator');
-domCharacters.style.height = '1460px'
+domCharacters.style.width = '920px'
 
 const addPaginator = () => {
     const previousPageBtn = document.createElement('button');
@@ -53,61 +53,61 @@ const removePaginator = () => {
     if(document.getElementById('previous-page-btn')) document.getElementById('previous-page-btn').remove();
     if(document.getElementById('current-page')) document.getElementById('current-page').remove();
 };
-
-const showCharactersInDOM = async (page = `https://rickandmortyapi.com/api/character/?page=1`) => {
+export const showCharactersInDOM = async (page = `https://rickandmortyapi.com/api/character/?page=1`) => {
     removePaginator();
 
-    domCharacters.innerHTML = `
-        <div class="w-full h-full">
-            <div class="spinner"></div>
-        </div>
-    `;
-
+    domCharacters.innerHTML = ``;
+    
     let { characters, info } = await getCharacters(page);
 
-    domCharacters.innerHTML = '';
+    if(characters && info) {
 
-    nextPage = info.next;
-    previousPage = info.prev;
+        domCharacters.innerHTML = '';
 
-    characters.map((element, i) => {
-        let character = document.createElement('tr');
+        nextPage = info.next;
+        previousPage = info.prev;
 
-        character.innerHTML = `
-            <td class="px-6 py-4 whitespace-nowrap">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 w-10 h-10">
-                        <img class="w-10 h-10 rounded-full" src=${element.image} alt=${element.name}>
+        characters.map((element, i) => {
+            let character = document.createElement('tr');
+
+            character.innerHTML = `
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 w-10 h-10">
+                            <img class="w-10 h-10 rounded-full" src=${element.image} alt=${element.name}>
+                        </div>
+                        <div class="ml-4">
+                            ${element.name}
+                        </div>
                     </div>
-                    <div class="ml-4">
-                        ${element.name}
-                    </div>
-                </div>
-            </td>
+                </td>
 
-            <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${element.species}</div>
-            </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">${element.species}</div>
+                </td>
 
-            <td class="px-6 py-4 whitespace-nowrap">
-                <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
-                    ${element.status}
-                </span>
-            </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
+                        ${element.status}
+                    </span>
+                </td>
 
-            <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${element.gender}</div>
-            </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">${element.gender}</div>
+                </td>
 
-            <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${element.location.name}</div>
-            </td>
-        `;
-        
-        domCharacters.appendChild(character);
-    });
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">${element.location.name}</div>
+                </td>
+            `;
+            
+            domCharacters.appendChild(character);
+        });
 
-    addPaginator();
+        addPaginator();
+    } else {
+        domCharacters.innerHTML = `<div class="p-6 bg-white text-3xl"><p class="opacity-60">🤔 There are no characters with this properties</p></div>`;
+    };
 };
 
 // Main

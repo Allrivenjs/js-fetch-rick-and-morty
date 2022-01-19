@@ -2,7 +2,7 @@
 
 ## Commands
 
-Activate tailwind compiler:
+Turn on tailwind compiler:
 
 ~~~
 npx tailwind -i ./src/assets/styles.css -o ./dist/styles.css --watch

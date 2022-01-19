@@ -38,11 +38,65 @@
 
         <article class="flex flex-col items-center justify-center w-full pt-8 pb-8 bg-slate-50">
             <div class="flex flex-wrap justify-center w-11/12 gap-4 ap-4">
+                <div class="mb-4 mr-4 w-52">
+                    <h2 class="mb-2 text-2xl">Filter by:</h2>
+                    <hr class="mb-4"/>
+                    
+                    <div class="flex flex-col mb-4">
+                        <div class="flex items-center mb-2">
+                            <input id="filter-name" type="checkbox" name="filter-name" class="mr-2">
+                            <label class="text-lg" for="filter-name">Name</label>
+                        </div>
+                        <input id="name-input" type="text" class="hidden form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="character name"/>
+                    </div>
+
+                    <div class="flex flex-col mb-4">
+                        <div class="flex items-center mb-2">
+                            <input id="filter-status" type="checkbox" name="filter-status" class="mr-2">
+                            <label class="text-lg" for="filter-status">Status</label>
+                        </div>
+                        <select id="status-select" class="hidden form-select appearance-none w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                            <option selected value="alive">Alive</option>
+                            <option value="dead">Dead</option>
+                            <option value="unknown">Unknown</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col mb-4">
+                        <div class="flex items-center mb-2">
+                            <input id="filter-species" type="checkbox" name="filter-species" class="mr-2">
+                            <label class="text-lg" for="filter-species">Species</label>
+                        </div>
+                        <input id="species-input" type="text" class="hidden form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Species name"/>
+                    </div>
+
+                    <div class="flex flex-col mb-4">
+                        <div class="flex items-center mb-2">
+                            <input id="filter-type" type="checkbox" name="filter-type" class="mr-2">
+                            <label class="text-lg" for="filter-type">Type</label>
+                        </div>
+                        <input id="type-input" type="text" class="hidden form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Type name"/>
+                    </div>
+
+                    <div class="flex flex-col mb-4">
+                        <div class="flex items-center mb-2">
+                            <input id="filter-gender" type="checkbox" name="filter-gender" class="mr-2">
+                            <label class="text-lg" for="filter-gender">Gender</label>
+                        </div>
+                        <select id="gender-select" class="hidden form-select appearance-none w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                            <option selected value="female">Female</option>
+                            <option value="male">Male</option>
+                            <option value="genderless">Genderless</option>
+                            <option value="unknown">Unknown</option>
+                        </select>
+                    </div>
+
+                    <button id="search" class="flex items-center px-3 py-2 text-sm font-semibold text-black bg-green-200 border rounded-md shadow-md border-slate-300 hover:bg-green-100">Search</button>
+                </div>
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                             <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
-
                                 <table class="min-w-full divide-y divide-gray-200" id="characters">
                                     <thead class="bg-gray-50">
                                         <tr>
@@ -64,79 +118,16 @@
                                         </tr>
                                     </thead>
                                     
-                                    <tbody id="characters" class="bg-white divide-y divide-gray-200">
-                                        <!-- <tr>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="flex items-center">
-                                                    <div class="flex-shrink-0 w-10 h-10">
-                                                        <img class="w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
-                                                    </div>
-                                                    <div class="ml-4">
-                                                        asdf
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
-                                                    Active
-                                                </span>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                                            </td>
-
-                                            <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                            </td>
-                                        </tr> -->
-                                    </tbody>
-                                    
+                                    <tbody id="characters" class="bg-white divide-y divide-gray-200"></tbody>
                                 </table>
-                                
                             </div>
                         </div>
+                        
                     </div>
                 </div>
                 
-                <!-- <section class="flex p-2 bg-white rounded-lg shadow-md h-52 animate-pulse">
-                    <div class="rounded bg-slate-300 w-44 h-44 ">
-
-                    </div>
-                    <div class="flex flex-col justify-around ml-4">
-                        <div class="h-8 rounded w-44 bg-slate-300"></div>
-                        <div class="w-64 h-2 rounded bg-slate-300"></div>
-                        <div class="w-56 h-2 rounded bg-slate-300"></div>
-                        <div class="w-64 h-2 rounded bg-slate-300"></div>
-                        <div class="w-64 h-2 rounded bg-slate-300"></div>
-                        <div class="w-56 h-2 rounded bg-slate-300"></div>
-                        <div class="w-64 h-2 rounded bg-slate-300"></div>
-                    </div>
-                </section> -->
-                
             </div>
-
-
-            <div id="paginator" class="flex gap-4 mt-8">
-                <!-- <button id="previous-page-btn" class="flex items-center px-3 py-2 text-sm font-semibold text-gray-500 border rounded-md shadow-md bg-gray-50 border-slate-300 hover:bg-green-100">
-                    <i data-feather="arrow-left" class="mr-2"></i>
-                    Previous page
-                </button>
-                <p id="current-page" class="flex items-center px-3 py-2 text-sm font-semibold text-gray-500 border rounded-md shadow-md bg-gray-50 border-slate-300">Página</p>
-                <button id="next-page-btn" class="flex items-center px-3 py-2 text-sm font-semibold text-gray-500 border rounded-md shadow-md bg-gray-50 border-slate-300 hover:bg-green-100">
-                    Next page
-                    <i data-feather="arrow-right" class="ml-2"></i>
-                </button> -->
-            </div>
+            <div id="paginator" class="flex gap-4 mt-8"></div>
         </article>
 
         <footer class="flex items-center justify-center bg-green-100 h-44">
@@ -150,5 +141,6 @@
         feather.replace();
     </script>
     <script type="module" src="./src/characters.js"></script>
+    <script type="module" src="./src/filter.js"></script>
 </body>
 </html>
