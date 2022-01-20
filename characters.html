@@ -39,65 +39,76 @@
         <article class="flex flex-col items-center justify-center w-full pt-8 pb-8 bg-slate-50">
             <div class="flex flex-wrap justify-center w-11/12 gap-4 ap-4">
                 <div class="mb-4 mr-4 w-52">
-                    <h2 class="mb-2 text-2xl">Filter by:</h2>
-                    <hr class="mb-4"/>
-                    
-                    <div class="flex flex-col mb-4">
-                        <div class="flex items-center mb-2">
-                            <input id="filter-name" type="checkbox" name="filter-name" class="mr-2">
-                            <label class="text-lg" for="filter-name">Name</label>
+                    <div>
+                        <h2 class="mb-2 text-2xl">Filter by:</h2>
+                        <hr class="mb-4"/>
+                        
+                        <div class="flex flex-col mb-4">
+                            <div class="flex items-center mb-2">
+                                <input id="filter-name" type="checkbox" name="filter-name" class="mr-2">
+                                <label class="text-lg" for="filter-name">Name</label>
+                            </div>
+                            <input id="name-input" type="text" class="hidden form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="character name"/>
                         </div>
-                        <input id="name-input" type="text" class="hidden form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="character name"/>
-                    </div>
 
-                    <div class="flex flex-col mb-4">
-                        <div class="flex items-center mb-2">
-                            <input id="filter-status" type="checkbox" name="filter-status" class="mr-2">
-                            <label class="text-lg" for="filter-status">Status</label>
+                        <div class="flex flex-col mb-4">
+                            <div class="flex items-center mb-2">
+                                <input id="filter-status" type="checkbox" name="filter-status" class="mr-2">
+                                <label class="text-lg" for="filter-status">Status</label>
+                            </div>
+                            <select id="status-select" class="hidden form-select appearance-none w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                                <option selected value="alive">Alive</option>
+                                <option value="dead">Dead</option>
+                                <option value="unknown">Unknown</option>
+                            </select>
                         </div>
-                        <select id="status-select" class="hidden form-select appearance-none w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                            <option selected value="alive">Alive</option>
-                            <option value="dead">Dead</option>
-                            <option value="unknown">Unknown</option>
-                        </select>
-                    </div>
 
-                    <div class="flex flex-col mb-4">
-                        <div class="flex items-center mb-2">
-                            <input id="filter-species" type="checkbox" name="filter-species" class="mr-2">
-                            <label class="text-lg" for="filter-species">Species</label>
+                        <div class="flex flex-col mb-4">
+                            <div class="flex items-center mb-2">
+                                <input id="filter-species" type="checkbox" name="filter-species" class="mr-2">
+                                <label class="text-lg" for="filter-species">Species</label>
+                            </div>
+                            <input id="species-input" type="text" class="hidden form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Species name"/>
                         </div>
-                        <input id="species-input" type="text" class="hidden form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Species name"/>
-                    </div>
 
-                    <div class="flex flex-col mb-4">
-                        <div class="flex items-center mb-2">
-                            <input id="filter-type" type="checkbox" name="filter-type" class="mr-2">
-                            <label class="text-lg" for="filter-type">Type</label>
+                        <div class="flex flex-col mb-4">
+                            <div class="flex items-center mb-2">
+                                <input id="filter-type" type="checkbox" name="filter-type" class="mr-2">
+                                <label class="text-lg" for="filter-type">Type</label>
+                            </div>
+                            <input id="type-input" type="text" class="hidden form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Type name"/>
                         </div>
-                        <input id="type-input" type="text" class="hidden form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Type name"/>
-                    </div>
 
-                    <div class="flex flex-col mb-4">
-                        <div class="flex items-center mb-2">
-                            <input id="filter-gender" type="checkbox" name="filter-gender" class="mr-2">
-                            <label class="text-lg" for="filter-gender">Gender</label>
+                        <div class="flex flex-col mb-4">
+                            <div class="flex items-center mb-2">
+                                <input id="filter-gender" type="checkbox" name="filter-gender" class="mr-2">
+                                <label class="text-lg" for="filter-gender">Gender</label>
+                            </div>
+                            <select id="gender-select" class="hidden form-select appearance-none w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                                <option selected value="female">Female</option>
+                                <option value="male">Male</option>
+                                <option value="genderless">Genderless</option>
+                                <option value="unknown">Unknown</option>
+                            </select>
                         </div>
-                        <select id="gender-select" class="hidden form-select appearance-none w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                            <option selected value="female">Female</option>
-                            <option value="male">Male</option>
-                            <option value="genderless">Genderless</option>
-                            <option value="unknown">Unknown</option>
-                        </select>
-                    </div>
 
-                    <button id="search" class="flex items-center px-3 py-2 text-sm font-semibold text-black bg-green-200 border rounded-md shadow-md border-slate-300 hover:bg-green-100">Search</button>
+                        <button id="search" class="flex items-center px-3 py-2 text-sm font-semibold text-black bg-green-200 border rounded-md shadow-md border-slate-300 hover:bg-green-100">Search</button>
+                    </div>
+                    <div class="mt-8">
+                        <h2 class="mb-2 text-2xl">Stats per page</h2>
+                        <hr class="mb-4"/>
+
+                        <p class="mb-3 font-bold">Number of alives: <span id="n-alive" class="font-normal">0</span> </p>
+                        <p class="mb-3 font-bold">Number of deads: <span id="n-dead" class="font-normal">0</span> </p>
+                        <p class="mb-3 font-bold">Number of males: <span id="n-male" class="font-normal">0</span> </p>
+                        <p class="mb-3 font-bold">Number of females: <span id="n-female" class="font-normal">0</span> </p>
+                    </div>     
                 </div>
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                             <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
-                                <table class="min-w-full divide-y divide-gray-200" id="characters">
+                                <table class="min-w-full divide-y divide-gray-200">
                                     <thead class="bg-gray-50">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
@@ -111,6 +122,9 @@
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                                 Gender
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                origin
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                                 Location

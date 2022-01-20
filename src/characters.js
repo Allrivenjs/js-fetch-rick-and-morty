@@ -1,9 +1,18 @@
 import { getCharacters } from "./services.js";
 
 // Characters page
+
+// Pagination
 let currentPage = 1;
 let nextPage;
 let previousPage;
+
+// data
+let nAlive = 0;
+let nDead = 0;
+
+let nMale = 0;
+let nFemale = 0;
 
 // DOM elements
 const domCharacters = document.getElementById('characters');
@@ -67,8 +76,18 @@ export const showCharactersInDOM = async (page = `https://rickandmortyapi.com/ap
         nextPage = info.next;
         previousPage = info.prev;
 
+        nAlive = 0;
+        nDead = 0;
+        nMale = 0;
+        nFemale = 0;
+
         characters.map((element, i) => {
             let character = document.createElement('tr');
+
+            if(element.status === 'Alive') nAlive++;
+            if(element.status === 'Dead') nDead++;
+            if(element.gender === 'Male') nMale++;
+            if(element.gender === 'Female') nFemale++;
 
             character.innerHTML = `
                 <td class="px-6 py-4 whitespace-nowrap">
@@ -97,6 +116,10 @@ export const showCharactersInDOM = async (page = `https://rickandmortyapi.com/ap
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">${element.origin.name}</div>
+                </td>
+
+                <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-sm text-gray-900">${element.location.name}</div>
                 </td>
             `;
@@ -105,8 +128,17 @@ export const showCharactersInDOM = async (page = `https://rickandmortyapi.com/ap
         });
 
         addPaginator();
+
+        document.getElementById('n-alive').textContent = nAlive;
+        document.getElementById('n-dead').textContent = nDead;
+        document.getElementById('n-male').textContent = nMale;
+        document.getElementById('n-female').textContent = nFemale;
     } else {
         domCharacters.innerHTML = `<div class="p-6 bg-white text-3xl"><p class="opacity-60">🤔 There are no characters with this properties</p></div>`;
+        document.getElementById('n-alive').textContent = 0;
+        document.getElementById('n-dead').textContent = 0;
+        document.getElementById('n-male').textContent = 0;
+        document.getElementById('n-female').textContent = 0;
     };
 };
 
