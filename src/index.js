@@ -1,53 +1,66 @@
-import { getRandomCharactersWithAnArray } from "./services.js";
+import { getRandomCharactersWithAnArray, getRandomLocationsWithAnArray } from "./services.js";
 
 
 // página principal
 
 // characters
 
-const dom_characters = document.getElementById('characters');
-const randomCharacters = [];
+const domCharacters = document.getElementById('characters');
+
 
 const API_TOTAL_CHARACTERS = 826;
+const API_TOTAL_LOCATIONS = 126;
+const N_RANDOM_CHARACTERS = 21;
 
-let characters = [];
+let elements = [];
 
 // generating random numbers for the random characters array
-for (let index = 0; index < 6; index++) {
-    randomCharacters[index] = Math.floor(Math.random() * API_TOTAL_CHARACTERS + 1);
-}
+const generateRandomNum = (max) => {
+    const randomNumber = [];
+    for (let index = 0; index < N_RANDOM_CHARACTERS; index++) {
+        randomNumber[index] = Math.floor(Math.random() * max + 1);
+    };
+    return randomNumber;
+};
 
-const showCharactersInDOM = async () => {
-    characters = await getRandomCharactersWithAnArray(randomCharacters);
+const showRandomElementsInDOM = async (elementType = 'characters') => {
+    if(elementType === 'characters') {
+        elements = await getRandomCharactersWithAnArray(generateRandomNum(API_TOTAL_CHARACTERS));
+    } else if(elementType === 'locations') {
+        elements = await getRandomLocationsWithAnArray(generateRandomNum(API_TOTAL_LOCATIONS));
+    };
 
-    dom_characters.innerHTML = '';
+    domCharacters.innerHTML = '';
 
-    characters.map((element, i) => {
+    elements.map((element, i) => {
         const character = document.createElement('section');
-        character.classList = 'flex bg-white p-2 rounded-lg shadow-md h-52';
-        character.style.width = '450px'
+        character.classList = 'flex bg-whiterounded-lg shadow-md h-52 w-52 relative';
 
-        character.innerHTML = `
-            <img 
-                src=${element.image}
-                class="object-cover"
-                alt=${element.name}
-            />
-            <div class="flex flex-col justify-around ml-4">
-                <h2 class="text-2xl">${element.name}</h2>
-                <div class="flex items-center">
-                    <span class="w-4 h-4 bg-green-500 inline-block rounded-full mr-2"></span>
-                    <p class="">${element.species} - ${element.status}</p>
+        if(elementType === 'characters') {
+            character.innerHTML = `
+                <img 
+                    src=${element.image}
+                    class="object-cover z-10"
+                    alt=${element.name}
+                />
+                <div class="absolute p-4 flex w-full h-full justify-center items-center bg-green-200 bg-opacity-50 z-50 opacity-0 hover:opacity-100">
+                    <h2 class="text-xl text-green-900 font-extrabold">${element.name}</h2>
                 </div>
+            `;
+        } else if(elementType === 'locations')  {
+            character.innerHTML = `
+                <div class="absolute p-4 flex w-full h-full justify-center items-center bg-green-200 bg-opacity-50 z-50">
+                    <h2 class="text-xl text-green-900 font-extrabold">${element.name}</h2>
+                </div>
+            `;
+        };
 
-                <p class="text-slate-600">Last known location:</p>
-                <p class="text-lg">${element.location.name}</p>
-            </div>
-        `;
-
-        dom_characters.appendChild(character);
+        domCharacters.appendChild(character);
     });
 };
 
+document.getElementById('show-random-locations').addEventListener('click', (e) => showRandomElementsInDOM('locations'));
+document.getElementById('show-random-characters').addEventListener('click', (e) => showRandomElementsInDOM('characters'));
+
 // Main function
-(() => { showCharactersInDOM() })();
+(() => { showRandomElementsInDOM() })();
