@@ -10,14 +10,14 @@ const domCharacters = document.getElementById('characters');
 
 const API_TOTAL_CHARACTERS = 826;
 const API_TOTAL_LOCATIONS = 126;
-const N_RANDOM_CHARACTERS = 21;
+const N_RANDOM_ELEMENTS = 21;
 
 let elements = [];
 
 // generating random numbers for the random characters array
 const generateRandomNum = (max) => {
     const randomNumber = [];
-    for (let index = 0; index < N_RANDOM_CHARACTERS; index++) {
+    for (let index = 0; index < N_RANDOM_ELEMENTS; index++) {
         randomNumber[index] = Math.floor(Math.random() * max + 1);
     };
     return randomNumber;
@@ -26,6 +26,7 @@ const generateRandomNum = (max) => {
 const showRandomElementsInDOM = async (elementType = 'characters') => {
     if(elementType === 'characters') {
         elements = await getRandomCharactersWithAnArray(generateRandomNum(API_TOTAL_CHARACTERS));
+        console.log(elements);
     } else if(elementType === 'locations') {
         elements = await getRandomLocationsWithAnArray(generateRandomNum(API_TOTAL_LOCATIONS));
     };

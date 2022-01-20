@@ -32,7 +32,7 @@
             </nav>
 
             <div class="flex items-center justify-center w-full bg-green-100 h-96 bg">
-                <h1 class="font-bold text-7xl">Characters</h1>
+                <h1 class="font-bold text-7xl">Locations</h1>
             </div>
         </header>
 
@@ -51,24 +51,14 @@
                             <input id="name-input" type="text" class="hidden form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="character name"/>
                         </div>
 
-                        <div class="flex flex-col mb-4">
-                            <div class="flex items-center mb-2">
-                                <input id="filter-status" type="checkbox" name="filter-status" class="mr-2">
-                                <label class="text-lg" for="filter-status">Status</label>
-                            </div>
-                            <select id="status-select" class="hidden form-select appearance-none w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                                <option selected value="alive">Alive</option>
-                                <option value="dead">Dead</option>
-                                <option value="unknown">Unknown</option>
-                            </select>
-                        </div>
+                        
 
                         <div class="flex flex-col mb-4">
                             <div class="flex items-center mb-2">
-                                <input id="filter-species" type="checkbox" name="filter-species" class="mr-2">
-                                <label class="text-lg" for="filter-species">Species</label>
+                                <input id="filter-dimension" type="checkbox" name="filter-dimension" class="mr-2">
+                                <label class="text-lg" for="filter-dimension">Dimension</label>
                             </div>
-                            <input id="species-input" type="text" class="hidden form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Species name"/>
+                            <input id="dimension-input" type="text" class="hidden form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Species name"/>
                         </div>
 
                         <div class="flex flex-col mb-4">
@@ -79,29 +69,13 @@
                             <input id="type-input" type="text" class="hidden form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Type name"/>
                         </div>
 
-                        <div class="flex flex-col mb-4">
-                            <div class="flex items-center mb-2">
-                                <input id="filter-gender" type="checkbox" name="filter-gender" class="mr-2">
-                                <label class="text-lg" for="filter-gender">Gender</label>
-                            </div>
-                            <select id="gender-select" class="hidden form-select appearance-none w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                                <option selected value="female">Female</option>
-                                <option value="male">Male</option>
-                                <option value="genderless">Genderless</option>
-                                <option value="unknown">Unknown</option>
-                            </select>
-                        </div>
-
                         <button id="search" class="flex items-center px-3 py-2 text-sm font-semibold text-black bg-green-200 border rounded-md shadow-md border-slate-300 hover:bg-green-100">Search</button>
                     </div>
                     <div class="mt-8 hover:flex">
                         <h2 class="mb-2 text-2xl">Stats per page</h2>
                         <hr class="mb-4"/>
 
-                        <p class="mb-3 font-bold">Number of alives: <span id="n-alive" class="font-normal">0</span> </p>
-                        <p class="mb-3 font-bold">Number of deads: <span id="n-dead" class="font-normal">0</span> </p>
-                        <p class="mb-3 font-bold">Number of males: <span id="n-male" class="font-normal">0</span> </p>
-                        <p class="mb-3 font-bold">Number of females: <span id="n-female" class="font-normal">0</span> </p>
+                        <p class="mb-3 font-bold">Number of planets: <span id="n-planets" class="font-normal">0</span> </p>
                     </div>     
                 </div>
                 <div class="flex flex-col">
@@ -115,24 +89,15 @@
                                                 Name
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                                Species
+                                                Type
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                                Status
-                                            </th>
-                                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                                Gender
-                                            </th>
-                                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                                origin
-                                            </th>
-                                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                                Location
+                                                Dimension
                                             </th>
                                         </tr>
                                     </thead>
                                     
-                                    <tbody id="characters" class="bg-white divide-y divide-gray-200"></tbody>
+                                    <tbody id="locations" class="bg-white divide-y divide-gray-200"></tbody>
                                 </table>
                             </div>
                         </div>
@@ -154,7 +119,7 @@
     <script>
         feather.replace();
     </script>
-    <script type="module" src="./src/characters.js"></script>
-    <script type="module" src="./src/charactersFilter.js"></script>
+    <script type="module" src="./src/locationsFilter.js"></script>
+    <script type="module" src="./src/location.js"></script>
 </body>
 </html>
