@@ -17,7 +17,7 @@ let nFemale = 0;
 // DOM elements
 const domCharacters = document.getElementById('characters');
 const domPaginator = document.getElementById('paginator');
-domCharacters.style.width = '920px'
+// domCharacters.style.width = '920px'
 
 const addPaginator = () => {
     const previousPageBtn = document.createElement('button');

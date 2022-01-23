@@ -1,9 +1,17 @@
 # JS Fetch api Activity
 
-## Commands
+## Getting started
 
-Turn on tailwind compiler:
+Para poder iniciar la aplicación, primero debe clonar este repositorio, luego dirigirse a la carpeta y ejecutar los siguientes comandos:
 
-~~~
-npx tailwind -i ./src/assets/styles.css -o ./dist/styles.css --watch
-~~~
+Primero instale las dependencias de node:
+
+```
+ npm install
+```
+
+Luego, inicie el servidor local de la aplicación con el siguiente comando:
+
+```
+npm start
+```

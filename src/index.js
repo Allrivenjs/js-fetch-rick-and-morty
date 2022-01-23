@@ -26,7 +26,6 @@ const generateRandomNum = (max) => {
 const showRandomElementsInDOM = async (elementType = 'characters') => {
     if(elementType === 'characters') {
         elements = await getRandomCharactersWithAnArray(generateRandomNum(API_TOTAL_CHARACTERS));
-        console.log(elements);
     } else if(elementType === 'locations') {
         elements = await getRandomLocationsWithAnArray(generateRandomNum(API_TOTAL_LOCATIONS));
     };
